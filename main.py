@@ -14,8 +14,10 @@ app.config['UPLOAD_FOLDER'] = imgFolder
 @app.route("/")
 @app.route("/home")
 def home():
-  logo = os.path.join(app.config['UPLOAD_FOLDER'], 'Group 8.png')
-  return render_template('home.html', logo_img = logo)
+  logo = os.path.join(app.config['UPLOAD_FOLDER'], 'Group 8.svg')
+  popup = os.path.join(app.config['UPLOAD_FOLDER'], 'Group 3.svg')
+  flasklogo = os.path.join(app.config['UPLOAD_FOLDER'], 'Group 9.svg')
+  return render_template('home.html', logo_img = logo, pop_img = popup, flask_img = flasklogo)
 
 # Used to run the app
 app.run(host='0.0.0.0', port=81, debug=True)
