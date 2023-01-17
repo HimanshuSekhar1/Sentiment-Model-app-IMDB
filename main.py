@@ -6,7 +6,7 @@ import numpy as np
 app = Flask(__name__)
 
 # pickle dump for the sentiment_model.py to run
-model = pickle.load(open('sentiment.pkl', 'rb'))
+model = pickle.load(open('sentiment_analysis_model.pkl', 'rb'))
 
 # For images
 imgFolder = os.path.join('static', 'images')
@@ -25,11 +25,11 @@ def home():
   return render_template('home.html', logo_img = logo, pop_img = popup, flask_img = flasklogo)
 
 # Route to the sentiment model 
-@app.route('/prdeict', methods = ['POST', 'GET'])
+@app.route('/predict', methods = ['POST'])
 def predict():
   input_reviews = [x for x in request.form.values()]
   final = [np.arrays(input_reviews)]
-  prediction = model.predict.proba(final)
+  prediction = model.predict_proba(final)
   output = '{0:.{1}f}'.format(prediction[0][1], 1)
 
   if output < str(0.4):
