@@ -57,56 +57,57 @@
     <div class="card mx-auto w-50 text-white bg-dark mb-3" style="width: 18rem;">
       
 <!--       Input review Box -->
-        <div class="card-body">
-          <h6 class="card-title text-white text-center">Input your Review</h6>
-<!--             Text box -->
-          <div class="form-group">
-            <form action = '/predict' method = "POST">
-              <input <textarea class="form-control border-dark" rows="5" id="data_review" type = "text" name ="review">
-              </textarea>
-              
-            </form>
-          </div>
-          
-          <div class = "text-center">
-            
-  <!--           Check button -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Check
-            </button>
-  
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Result</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <p class = "text-secondary">{{ pred }}</p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-  <!--                   <button type="button" class="btn btn-primary">Save changes</button> -->
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        
-        </div>
-      
-
-  </div>
-      
-    </div>
-<!--     For footer -->
-<!--     <div class="card">
       <div class="card-body">
-        This is some text within a card body.
+        <h6 class="card-title text-white text-center">Input your Review</h6>
+        <div class="form-group">
+          <form action = '/predict' method = "POST" enctype="multipart/form-data">
+<!--             For text box -->
+            <input <textarea class="form-control border-dark" rows="5" id="data_review" name ="text" placeholder = "Text">
+            </textarea>
+<!--             For submit button -->
+            <br>
+              <div class = "text-center"> 
+                <input type = "submit" class="btn btn-primary">
+              </div>
+            </br>
+          </form>
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div class="card mx-auto" style="width: 15rem;">
+        <div class="card-body">
+          <h5 class="card-title">Result</h5>
+          <div class = "alert alert-primary" role = "alert">
+            {% if probability %}
+              {{ pred }}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+<!--     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Result</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p class = "text-secondary">
+              {% if probability %}
+              {{ pred }}
+              {% endif %}
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
       </div>
     </div> -->
 

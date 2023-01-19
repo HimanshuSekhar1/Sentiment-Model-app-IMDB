@@ -48,7 +48,7 @@ testing_labels = data['num_sentiment'][training_size:]
 
 # Various parameters for the process of tokenization
 words = 1000 # vocab_size
-oov_tok = ""
+oov_tok = "<OOV>"
 max_length = 1000
 padding_type = 'post'
 trunc_type = 'post'
@@ -78,5 +78,5 @@ model.compile(loss = 'binary_crossentropy', optimizer='adam',metrics=['accuracy'
 
 history = model.fit(training_padded, training_labels, epochs=30, validation_data=(testing_padded, testing_labels), verbose=1)
 
-pickle.dump(model, open('sentiment_analysis_model.pkl', 'wb'))
-model = pickle.load(open('sentiment_analysis_model.pkl', 'rb'))
+# pickle.dump(model, open('sentiment_analysis_model.pkl', 'wb'))
+# # model = pickle.load(open('sentiment_analysis_model.pkl', 'rb'))
